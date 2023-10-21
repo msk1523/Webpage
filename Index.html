@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Click Counter</title>
+</head>
+<body>
+    <button id="countButton">Click Me</button>
+    <p id="countDisplay">Count - 0</p>
+    <script>
+        let count = 0;
+        const countButton = document.getElementById("countButton");
+        const countDisplay = document.getElementById("countDisplay");
+
+        countButton.addEventListener("click", () => {
+            count++;
+            countDisplay.innerText = `Count - ${count}`;
+
+            // Send a request to the server to log the count
+            fetch("/log", {
+                method: "POST",
+                body: JSON.stringify({ count }),
+                headers: { "Content-Type": "application/json" }
+            });
+        });
+    </script>
+</body>
+</html>
