@@ -14,8 +14,7 @@ def log_count():
     global count
     data = json.loads(request.data)
     count = data['count']
-
-    # Log the count to a text file
+    
     with open('count_log.txt', 'a') as log_file:
         log_file.write(f'Count - {count}\n')
 
